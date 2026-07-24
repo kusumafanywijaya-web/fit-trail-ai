@@ -102,7 +102,7 @@ Mulai AI Agent
 <script>
 
 <script> async defer crossorigin="anonymous"
-src="https://connect.facebook.net/id_ID/sdk.js"></script>
+src="https://connect.facebook.net/en_US/sdk.js"></script>
 
 <script>
 window.fbAsyncInit = function () {
@@ -118,8 +118,10 @@ function loginFacebook() {
   FB.login(function(response) {
     if (response.authResponse) {
 
-      FB.api('/me', {fields:'name,email'}, function(user) {
-        alert("Selamat datang " + user.name);
+      FB.api('/me', { fields: 'name,email' }, function(user) {
+    alert("Selamat datang " + user.name);
+    console.log(user);
+});
         console.log(user);
       });
 
