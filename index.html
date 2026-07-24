@@ -101,9 +101,40 @@ Mulai AI Agent
 
 <script>
 
-function loginFacebook(){
-alert("Login Facebook akan dihubungkan setelah Meta App ID ditambahkan.");
+<script async defer crossorigin="anonymous"
+src="https://connect.facebook.net/id_ID/sdk.js"></script>
+
+<script>
+window.fbAsyncInit = function () {
+  FB.init({
+    appId: '1403287995183514',
+    cookie: true,
+    xfbml: true,
+    version: 'v23.0'
+  });
+};
+
+function loginFacebook() {
+  FB.login(function(response) {
+    if (response.authResponse) {
+
+      FB.api('/me', {fields:'name,email'}, function(user) {
+        alert("Selamat datang " + user.name);
+        console.log(user);
+      });
+
+    } else {
+      alert("Login dibatalkan");
+    }
+  }, {
+    scope: 'public_profile,email,pages_show_list'
+  });
 }
+
+function startAI(){
+    alert("AI Agent siap dijalankan.");
+}
+</script>
 
 function startAI(){
 alert("AI Agent siap dijalankan.");
